@@ -376,5 +376,44 @@
 
         </LinearLayout>
     </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/not_connection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
+        <ImageButton
+            android:id="@+id/reload_not_connection"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="350dp"
+            android:layout_marginEnd="155dp"
+
+            android:background="@drawable/custom_button"
+            android:scaleType="fitXY"
+            android:src="@drawable/reload"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+
+            android:background="@drawable/custom_button"
+            android:src="@drawable/loading"
+            app:tint="@color/white" />
+    </RelativeLayout>
 </LinearLayout >
