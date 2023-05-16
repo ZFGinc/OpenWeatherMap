@@ -700,6 +700,42 @@ class MainActivity : AppCompatActivity() {
     <img src = "images/2-2.png">
 </p>
 
+```kotlin
+...
+@SuppressLint("SetTextI18n")
+private fun loadWeather(){
+    //Включаю видимость загрузки
+    not_connection.visibility = View.GONE
+    loading.visibility = View.VISIBLE
+
+    //Проверяю состояние сети
+    if(!internetCheck()){
+        Toast.makeText(this, "No internet connection", Toast.LENGTH_LONG).show()
+        not_connection.visibility = View.VISIBLE
+        loading.visibility = View.VISIBLE
+        enter_city_layout.visibility = View.GONE
+        current_weater_layout.visibility = View.GONE
+        return
+    }
+    
+    Thread {
+        val json = client.newCall(request).execute()
+            .use { response -> JSONObject(response.body()!!.string()) }
+
+        Log.e("json", json.toString())
+        
+        //Проверяю полученный ответ на наличие ошибки
+        if(json.has("cod") && json.has("message") ){
+            runOnUiThread() {
+                Toast.makeText(this, json.getString("message"), Toast.LENGTH_LONG).show()
+                enter_city_layout.visibility = View.VISIBLE
+                current_weater_layout.visibility = View.GONE
+            }
+        }
+...
+
+```
+
 ***
 
 # <p align = "center">Вывод</p>
